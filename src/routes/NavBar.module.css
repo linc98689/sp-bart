@@ -1,0 +1,21 @@
+.navBar_container {
+    position:fixed;
+    top:0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 20px;
+  }
+  .navBar_item{
+    color:white;
+    text-decoration: none;
+    padding: 20px;
+  }
+  a.active {
+    outline: 1px solid rgb(252, 249, 247);
+    outline-offset: 8px;
+    border-radius: 2px;
+    color:white;
+    text-decoration: none;
+  }
