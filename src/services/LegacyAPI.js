@@ -43,6 +43,27 @@ class LegacyAPI{
             console.error(e);
         }
     }
+
+    static async getRoutes(){
+        let url = LegacyAPI.BASE_URL + "route.aspx";
+        try{
+            let res = await axios({
+                url: url,
+                method: 'get',
+                params:{
+                    cmd:"routeinfo",
+                    key: LegacyAPI.BART_KEY,
+                    route:"all",
+                    date:"10/02/2020",
+                    json:'y'
+                }
+            });
+            console.log("all routes:", res.data);
+        }
+        catch(e){
+            console.error(e);
+        }
+    }
 }
 
 export default LegacyAPI;

@@ -1,3 +1,17 @@
 .stnIntro{
-    color: red;
+    text-align: left;
+    color: #0064a8;
+    margin-left:10px;
+}
+.stn_name{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.stn_address{
+    font-size:0.8em;
+    margin-bottom:10px;
+}
+.stn_desc{
+    color: black;
+    padding-bottom:10px;
 }
