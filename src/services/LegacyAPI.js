@@ -36,7 +36,6 @@ class LegacyAPI{
                     json:"y"
                 }
             });
-            console.log(resp);
             return resp.data.root.stations.station;
         }
         catch(e){
@@ -58,11 +57,34 @@ class LegacyAPI{
                     json:'y'
                 }
             });
-            console.log("all routes:", res.data);
+            let routes = res.data.root.routes.route; // array of routes
+            LegacyAPI.saveToLocalStorage("routes", routes);
+            return routes;
         }
         catch(e){
             console.error(e);
         }
+    }
+
+    static saveToLocalStorage(key, obj){
+        localStorage.setItem(key, JSON.stringify(obj));
+    }
+
+    static loadFromLocalStorage(key){
+        return JSON.parse(localStorage.getItem(key));
+    }
+
+    static async getLinesByStation(id){
+        let routes = LegacyAPI.loadFromLocalStorage("routes");
+        if(routes === null) {
+            routes = await LegacyAPI.getRoutes();
+            console.log("fetched routes: ", routes);
+        }
+        let lines = routes.filter(e=>{
+            let stns = new Set(e.config.station);
+            return stns.has(id);
+        });
+        return lines;
     }
 }
 

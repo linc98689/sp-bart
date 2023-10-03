@@ -1,0 +1,21 @@
+.lines_container{
+    margin-top: 30px;
+    margin-left:10px;
+    margin-bottom: 30px;
+    background:#e5eef7;
+    text-align: left;
+}
+.lines_title{
+    background-color:#0064a8;
+    color: rgb(239, 216, 216);
+    margin: 0;
+    width:100%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.lines_list{
+    margin-bottom: 30px;
+}
+.lines_item{
+    color: black;
+}

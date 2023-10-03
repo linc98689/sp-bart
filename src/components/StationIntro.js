@@ -4,7 +4,6 @@ import  LegacyAPI from '../services/LegacyAPI';
 import styles from './StationIntro.module.css';
 
 const StationIntro = ({id})=>{
-    LegacyAPI.getRoutes();
     const [stnInfo, setStnInfo] = useState(null);
     useEffect(()=>{
         const getStnInfo = async (id)=>{
