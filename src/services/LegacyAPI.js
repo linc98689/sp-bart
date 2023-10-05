@@ -86,6 +86,26 @@ class LegacyAPI{
         });
         return lines;
     }
+
+    static async getETD(){// get estimated times of departure for all stations
+        let url = LegacyAPI.BASE_URL + "etd.aspx";
+        try{
+            let res = await axios({
+                url: url,
+                method: "get",
+                params:{
+                    key: LegacyAPI.BART_KEY,
+                    cmd: "etd",
+                    orig: "ALL",
+                    json: "y"
+                },
+            })
+            console.log(res.data);
+        }
+        catch(e){
+            console.error(e);
+        }
+    }
 }
 
 export default LegacyAPI;
