@@ -101,11 +101,52 @@ class LegacyAPI{
                 },
             })
             console.log(res.data);
+            let etd = res.data.root.station; // array of etd by station
+            LegacyAPI.saveToLocalStorage("etd", etd);
+
+            return etd;
         }
         catch(e){
             console.error(e);
         }
     }
+
+    static async getETDbyStation(id){
+        let etd = LegacyAPI.loadFromLocalStorage("etd");
+        if(etd === null){
+            try{
+                etd = await LegacyAPI.getETD();
+            }
+            catch(e){
+                console.error(e);
+            }
+        }
+        return etd.filter((e)=>(e.abbr === id))[0].etd; // array of etd by destination of this stn
+    }
+
+    static async fetchETDbyStation(id){
+        let url = LegacyAPI.BASE_URL + "etd.aspx";
+        try{
+            let res = await axios({
+                url: url,
+                method: "get",
+                params:{
+                    key: LegacyAPI.BART_KEY,
+                    cmd: "etd",
+                    orig: id,
+                    json: "y"
+                }
+            });
+            console.log(res.data.root.station[0].etd);
+            return res.data.root.station[0].etd;
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
+
+    
+
 }
 
 export default LegacyAPI;
