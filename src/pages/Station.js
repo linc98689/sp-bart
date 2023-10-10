@@ -1,9 +1,10 @@
 import React from 'react';
-import {useParams, Navigate} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import styles from './Station.module.css';
 import StationIntro from '../components/StationIntro';
 import StationLines from "../components/StationLines";
 import StationETD from "../components/StationETD";
+import StationSchedules from '../components/StationSchedules';
 
 const Station = ()=>{
     const {id} = useParams();
@@ -13,6 +14,7 @@ const Station = ()=>{
             <StationIntro id={id} />
             <StationLines id={id} />
             <StationETD id={id} />
+            <StationSchedules id={id} />
         </div>
     );
 };

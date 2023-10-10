@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 
-import LegacyAPI from "../services/LegacyAPI";
+import LegacyAPI, {BartTime} from "../services/LegacyAPI";
 import styles from "./StationETD.module.css";
 
 const StationETD = ({id})=>{
@@ -30,7 +30,8 @@ const StationETD = ({id})=>{
         <div className={styles.etd_container}>
             <div className={styles.etd_title}>
                 <div className={styles.etd_left}>Real Time Departures </div>
-                <div className={styles.etd_right}>Updated {new Date().toLocaleTimeString().replace(/:\d{2} /, " ")} </div>
+                {/* <div className={styles.etd_right}>Updated {new Date().toLocaleTimeString().replace(/:\d{2} /, " ")} </div> */}
+                <div className={styles.etd_right}>Updated {BartTime.getCurrentTime()} </div>
             </div>
             {etd !== null && 
                 <div className={styles.etd_list}>

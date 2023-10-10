@@ -1,0 +1,16 @@
+.sched_container{
+    margin-top: 30px;
+    margin-left:10px;
+    margin-bottom: 30px;
+    background:#fdf0e0;
+    text-align: left;
+    color: black;
+}
+.sched_title{
+    background-color:#ce4814;
+    color: rgb(239, 216, 216);
+    margin: 0;
+    width:100%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
