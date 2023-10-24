@@ -7,9 +7,15 @@ const StationIntro = ({id})=>{
     const [stnInfo, setStnInfo] = useState(null);
     useEffect(()=>{
         const getStnInfo = async (id)=>{
-            let res = await LegacyAPI.getStationByAbbreviation(id);
-            console.log(res);
-            setStnInfo(data =>res);}
+            try{
+                let res = await LegacyAPI.getStationByAbbreviation(id);
+                setStnInfo(data =>res);
+            }
+            catch(e){
+                console.error(e);
+            }
+        };
+            
         getStnInfo(id);
 
     }, [id]);

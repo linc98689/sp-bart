@@ -1,9 +1,54 @@
 .home {
+    box-sizing: border-box;
+    background-position:right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex-wrap: wrap;
+  }
+
+  .card{
+    box-sizing: border-box;
+    width: 25%;
+    height: 25vh;
+    color: white;
+    font-weight: 500; 
     text-align: center;
+    margin: 20px;
+   
   }
+  .title{
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  .content{
+    font-size: 2rem;
+    padding: 1rem;
+    opacity: 0.85;
+    font-weight: 600 ;
+  }
+  .color1{
+    background-color: #0064a8;
+  }
+  .color2{
+    background-color: #4f7e1d;
+  }
+  .color3{
+    background-color: #ce4814;
+  }
+  a{
+    text-decoration: none;
+  }
+  @media all and (max-width: 800px){
+    .card{
+      width:55%;
+    }
+  }
+
   
-  .home_header {
-    background-color: #8a0d17;
-    color: rgb(53, 175, 96);
-    padding: 1em 2em;
-  }
+  

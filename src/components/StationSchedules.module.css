@@ -8,9 +8,49 @@
 }
 .sched_title{
     background-color:#ce4814;
-    color: rgb(239, 216, 216);
+    color: white;
     margin: 0;
+    padding:6px 20px;
     width:100%;
-    font-size: 1.5em;
+    font-size: 1.1rem;
     font-weight: bold;
+    
+}
+.sched_item{
+    display: flex;
+    color: black;
+    align-self: center;
+    background-color: #e5eef7;
+    font-size: 1rem;
+    column-gap: 8px;
+    padding:3px 8px;
+    align-self: center;
+}
+.sched_items{
+    height: 300px;
+    overflow:hidden; 
+    overflow-y:scroll;
+}
+.sched_list_container{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+.sched_side_container{
+    width: 100%;
+}
+.sched_subtitle{
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding:6px 20px;
+    width:100%;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+@media all and (max-width: 800px){
+    .sched_side_container{
+        width: 70%;
+    }
 }

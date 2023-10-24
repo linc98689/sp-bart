@@ -1,0 +1,28 @@
+.lines_symbol{
+    box-sizing: border-box;
+    display: block;
+    padding: auto 0;
+    width:30px;
+    height:30px;
+    text-align: center;
+    position: relative;
+}
+.lines_center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:rgb(86, 85, 85);
+    font-size: 0.7em;
+    font-weight: 500;
+}
+.lines_airplane{
+    width:30px;
+    height: 30px;
+    background-image: url("https://www.bart.gov/themes/custom/bart/assets/images/icon-lines/icon-line-beige.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+

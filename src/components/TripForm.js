@@ -43,7 +43,7 @@ const TripForm = ({removeForm, tripData})=>{
             <form className={styles.tripPlan_form}>
                 {/* station A */}
                 <label htmlFor="stnA" className={styles.tripPlan_a}>A</label>
-                <select id="stnA" name="stnA" value={formData.stnA} onChange={handleChange}>
+                <select id="stnA" name="stnA" value={formData.stnA} onChange={handleChange} className="text-orange-500" >
                     <option value=""> Enter starting point</option>
                     
                     {stations !== null && 
@@ -55,7 +55,7 @@ const TripForm = ({removeForm, tripData})=>{
 
                 {/* station B */}
                 <label htmlFor="stnB" className={styles.tripPlan_b} >B</label>
-                <select id="stnB" name="stnB" value={formData.stnB} onChange={handleChange}>
+                <select id="stnB" name="stnB" value={formData.stnB} onChange={handleChange} className="text-orange-500">
                     <option value=""> Enter destination point</option>
                     {stations !== null && 
                         stations.map((e)=>(
@@ -78,11 +78,11 @@ const TripForm = ({removeForm, tripData})=>{
                 </div>
 
                 {/* input: time */}
-                <input type="time" id="time" name="time" 
+                <input type="time" id="time" name="time" className="text-orange-500"
                 value={formData.time } onChange={handleChange}/>
 
                 {/* input: date */}
-                <input type="date"  id="date" name="date" value={formData.date} 
+                <input type="date"  id="date" name="date" value={formData.date} className="text-orange-500"
                 max={BartTime.getDateFromNow(56)}
                 min={BartTime.getDateFromNow(-10)}
                 onChange={handleChange} />

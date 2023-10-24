@@ -3,11 +3,26 @@ import axios from 'axios';
 class LegacyAPI{
     static BASE_URL ="https://api.bart.gov/api/";
     static BART_KEY = "MW9S-E7SL-26DU-VV8V";
+    static WEEK_DAY = "10/19/2023";
+    static SAT_DAY = "10/21/2023";
+    static SUN_DAY = "10/22/2023";
 
     static async getStations(){
         let stations = LegacyAPI.loadFromLocalStorage("stations");
         if(stations === null){
-            let url = LegacyAPI.BASE_URL + "stn.aspx";
+            try{
+                stations = await LegacyAPI.fetchStations();
+            }
+            catch(e){
+                console.error(e);
+            }
+        }
+        return stations;
+    }  
+
+    static async fetchStations(){
+        console.log("loading stations...");
+        let url = LegacyAPI.BASE_URL + "stn.aspx";
             try{
                 let resp = await axios({
                     url:url,
@@ -18,18 +33,50 @@ class LegacyAPI{
                         json:"y"
                     }
                 });
-                stations = resp.data.root.stations.station;
-                LegacyAPI.saveToLocalStorage("stations", stations);
+                let stations = await resp.data.root.stations.station;
+                LegacyAPI.saveToLocalStorage("stations", stations); // array of stations
+
+                // save object of stations with abbr as key to localStorage
+                let obj_stations = stations.reduce((ob, item)=>{
+                    ob[item.abbr] = item.name;
+                    return ob;
+                }, {});
+                LegacyAPI.saveToLocalStorage("stations-obj", obj_stations);
+
+                return stations;
+            }
+            catch(e){
+                console.error(e);
+            }
+    }
+
+    static async getStationByAbbreviation(abb){ //abb: four-chracter abbreviation of requested station
+        let stations = LegacyAPI.loadFromLocalStorage("stations-obj");
+        if(stations === null){
+            try{
+                await LegacyAPI.fetchStations();
+                stations = LegacyAPI.loadFromLocalStorage("stations-obj");
             }
             catch(e){
                 console.error(e);
             }
         }
-        return stations;
-        
-    }  
+        let station = stations[abb];
+        console.log("station: ", station);
 
-    static async getStationByAbbreviation(abb){ //abb: four-chracter abbreviation of requested station
+        if(typeof(station)=== "string"){
+            try{
+                station = await LegacyAPI.fetchStationByAbbreviation(abb);
+            }
+            catch(e){
+                console.error(e);
+            }
+        }
+        return station;
+    }
+
+    static async fetchStationByAbbreviation(abb){
+        console.log("loading station...");
         let url = LegacyAPI.BASE_URL + "stn.aspx";
         try{
             let resp = await axios({
@@ -42,16 +89,36 @@ class LegacyAPI{
                     json:"y"
                 }
             });
-            return resp.data.root.stations.station;
+            let station = resp.data.root.stations.station;
+            let stns_obj = LegacyAPI.loadFromLocalStorage("stations-obj");
+            stns_obj[station.abbr] = { ...station };
+            LegacyAPI.saveToLocalStorage("stations-obj", stns_obj);
+
+            return station;
         }
         catch(e){
             console.error(e);
         }
+
     }
 
     static async getRoutes(){
+        let routes = LegacyAPI.loadFromLocalStorage("routes-obj");
+        if(routes === null){
+            try{
+                routes = await LegacyAPI.fetchRoutes();
+            }
+            catch(e){
+                console.error(e);
+            }
+        }
+        return routes;
+    }
+
+    static async fetchRoutes(){
         let url = LegacyAPI.BASE_URL + "route.aspx";
         try{
+            console.log("loading routes...");
             let res = await axios({
                 url: url,
                 method: 'get',
@@ -59,13 +126,41 @@ class LegacyAPI{
                     cmd:"routeinfo",
                     key: LegacyAPI.BART_KEY,
                     route:"all",
-                    date:"10/02/2020",
+                    date:LegacyAPI.WEEK_DAY, // weekdays
                     json:'y'
                 }
             });
-            let routes = res.data.root.routes.route; // array of routes
+            let routes = res.data.root.routes.route; // array of routes, missing route-19
+            // add route-19
+            let res19 = await axios({
+                url: url,
+                method: 'get',
+                params:{
+                    cmd:"routeinfo",
+                    key: LegacyAPI.BART_KEY,
+                    route:"19",
+                    date:LegacyAPI.WEEK_DAY, // weekdays
+                    json:'y'
+                }
+            });
+            routes.push(res19.data.root.routes.route);
+            
+            routes = routes.map(e=>{
+                let idx = e.name.indexOf(" to ");
+                let origName = e.name.substring(0, idx);
+                let destName = e.name.substring(idx+4);
+                return {...e, origName, destName};
+            });
             LegacyAPI.saveToLocalStorage("routes", routes);
-            return routes;
+
+            // save as object with route-number as key
+            let obj_routes = routes.reduce((obj, item)=>{
+                obj[item.routeID] = {...item};
+                return obj;
+            }, {});
+            LegacyAPI.saveToLocalStorage("routes-obj", obj_routes);
+
+            return obj_routes;
         }
         catch(e){
             console.error(e);
@@ -81,17 +176,33 @@ class LegacyAPI{
     }
 
     static async getLinesByStation(id){
-        let routes = LegacyAPI.loadFromLocalStorage("routes");
-        if(routes === null) {
-            routes = await LegacyAPI.getRoutes();
-            console.log("fetched routes: ", routes);
+        try{
+            let routes = await LegacyAPI.getRoutes();
+            let station = await LegacyAPI.getStationByAbbreviation(id);
+            let lines = [];
+            if(station.north_routes.route)
+                lines = [...station.north_routes.route];
+            if(station.south_routes.route)
+                lines = [...lines, ...station.south_routes.route];
+
+            console.log("lines-0: ", lines);
+            lines =  lines.map((elm)=> routes[elm]);
+            console.log("lines-1: ", lines);
+            lines = lines.reduce((obj, item)=>{
+                obj[item.hexcolor] = 
+                 obj[item.hexcolor] === undefined? [item] : [...obj[item.hexcolor], item];
+                 return obj;
+            }, {});
+
+            return Object.values(lines); // array of lines combined by color
         }
-        let lines = routes.filter(e=>{
-            let stns = new Set(e.config.station);
-            return stns.has(id);
-        });
-        return lines;
+        catch(e){
+            console.error(e);
+        }
+        return ;
     }
+
+
 
     static async getETD(){// get estimated times of departure for all stations
         let url = LegacyAPI.BASE_URL + "etd.aspx";
@@ -144,7 +255,25 @@ class LegacyAPI{
                 }
             });
             console.log(res.data.root.station[0].etd);
-            return res.data.root.station[0].etd;
+            let etd = res.data.root.station[0].etd;
+            if (etd === undefined)
+                return null;
+            else{
+                etd = etd.map(e =>{
+                    let dest = e.destination;
+                    let estimate = e.estimate.reduce((obj, item) => {
+                        item.dest = dest;
+                        obj[item.hexcolor]= 
+                        obj[item.hexcolor] === undefined? [item] : [...obj[item.hexcolor], item];
+                        return obj;
+                    }, {});
+                    estimate = Object.values(estimate);
+                    console.log("combined time: ", {...e, estimate});
+                    return {...e, estimate};
+                });
+
+                return etd;
+            }
         }
         catch(e){
             console.log(e);
@@ -167,6 +296,49 @@ class LegacyAPI{
             });
             console.log("schedule: ", res.data.root.station);
             return res.data.root.station;
+        }
+        catch(e){
+            console.error(e);
+        }
+    }
+
+    static async getSchedByStn(id){
+        try{
+            let sched = await LegacyAPI.fetchSchedByStn(id);
+            let station = await LegacyAPI.getStationByAbbreviation(id);
+            let routes = await LegacyAPI.getRoutes();
+
+            
+            // split items in schedule into north and south and stored as object
+            let north = new Set(station.north_routes.route);
+
+            let initObj = {north:{items:[], 
+                                platforms: station.north_platforms.platform ===""? []: station.north_platforms.platform},
+                           south:{items:[], 
+                                platforms: station.south_platforms.platform ===""? []: station.south_platforms.platform},
+                           name: station.name
+                        };   
+
+            sched = sched.item.reduce((obj, item)=>{
+                let dest = item["@trainHeadStation"];
+                let route = item["@line"];
+                let hexcolor = routes[route].hexcolor;
+                let color = routes[route].color;
+                let time = item["@origTime"];
+                let newItem = {time, hexcolor, color, dest};
+
+
+                if(north.has(route)){
+                    obj.north.items = [ ...obj.north.items, newItem ];
+                }
+                else{
+                    obj.south.items =  [...obj.south.items, newItem ];
+                }
+
+                return obj;
+            }, initObj);
+
+            return sched;
         }
         catch(e){
             console.error(e);
@@ -249,7 +421,7 @@ class BartTime{
         let h = Number(t.substring(0, idx));
         let min = t.substring(idx+1);
         if(h === 0)
-            return "12" + ":" + min + "am";
+            return ("12" + ":" + min + "am");
         else if (h === 12)
             return "12" + ":" + min + "pm";
         else if (h >12)

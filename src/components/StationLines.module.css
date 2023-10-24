@@ -1,21 +1,54 @@
 .lines_container{
-    margin-top: 30px;
-    margin-left:10px;
-    margin-bottom: 30px;
-    background:#e5eef7;
+    box-sizing: border-box;
+    width:100%;
+    margin:0;
     text-align: left;
+    background-color: #e5eef7;
 }
 .lines_title{
     background-color:#0064a8;
-    color: rgb(239, 216, 216);
+    color: white;
     margin: 0;
+    padding:6px 20px;
     width:100%;
-    font-size: 1.5em;
+    font-size: 1.1rem;
     font-weight: bold;
 }
 .lines_list{
+    width:100%;
     margin-bottom: 30px;
 }
 .lines_item{
     color: black;
+    display: flex;
+    align-self: center;
+    background-color: #e5eef7;
+    font-size: 1rem;
+    column-gap: 8px;
+    padding:3px 8px;
+    align-self: center;
+}
+.lines_symbol{
+    box-sizing: border-box;
+    display: block;
+    padding: auto 0;
+    width:30px;
+    height:30px;
+    /* text-align: center; */
+    position: relative;
+}
+.lines_center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.lines_airplane{
+    width:30px;
+    height: 30px;
+    background-image: url("https://www.bart.gov/themes/custom/bart/assets/images/icon-lines/icon-line-beige.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* border-radius: 50%; */
 }

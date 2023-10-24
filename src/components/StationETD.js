@@ -1,7 +1,10 @@
 import {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import LegacyAPI, {BartTime} from "../services/LegacyAPI";
 import styles from "./StationETD.module.css";
+import LineSymbol from "./LineSymbol";
 
 const StationETD = ({id})=>{
     const [etd, setEtd] = useState(null);
@@ -30,20 +33,39 @@ const StationETD = ({id})=>{
         <div className={styles.etd_container}>
             <div className={styles.etd_title}>
                 <div className={styles.etd_left}>Real Time Departures </div>
-                {/* <div className={styles.etd_right}>Updated {new Date().toLocaleTimeString().replace(/:\d{2} /, " ")} </div> */}
-                <div className={styles.etd_right}>Updated {BartTime.getCurrentTime()} </div>
+                <div className={styles.etd_right}>Updated {BartTime.getCurrentTime()} PT</div>
             </div>
             {etd !== null && 
                 <div className={styles.etd_list}>
                 {etd.map((e)=>(
                     <div key={e.abbreviation}>
-                        {e.destination }
-                        {e.estimate.map((el)=>(
-                            <div style={{"backgroundColor": el.hexcolor}}>{`${el.minutes} min` }</div>
-                        ))}
+                      
+                        {e.estimate.map((el)=>{
+                            return (
+                                <div className={styles.etd_dest_line}>
+                                    <LineSymbol hexcolor={el[0].hexcolor} color={el[0].color}/>
+                                    <div className={styles.etd_dest}>{el[0].dest} </div>
+                                    <div className={styles.etd_times}>
+                                        {el.map(elm=>(
+                                            <>
+                                            <span> {elm.minutes} </span>
+                                            <i class="bi bi-train-freight-front"></i>
+                                            </>
+                                        ))} 
+                                        min
+                                    </div>
+                                </div>
+                            );
+                        })}
+                       
                     </div>
-                ))}
+               ))
+                }
                 </div>
+            }
+            {etd === null && 
+            <div className={styles.etd_desc}>Real time departures are not available for the Real Time Departures Line.
+                 Please use <Link to="/plantrip" className={styles.etd_link}>Trip Planner</Link></div>
             }
 
         </div>

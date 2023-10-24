@@ -20,7 +20,7 @@ const Stations = ()=>{
             <div className={styles.stations_header}>
                 Stations
             </div>
-            <p>For detailed station information—including Real Time Departures, Schedules, Parking, Connecting Transit, and Station Updates—select your station from the following list:</p>
+            <p className={styles.stations_desc}>For detailed station information—including Real Time Departures, Schedules, Parking, Connecting Transit, and Station Updates—select your station from the following list:</p>
             {stations.length !==0 && 
                 <div className={styles.stations_list_container}>
                     {stations.map(e=> (
