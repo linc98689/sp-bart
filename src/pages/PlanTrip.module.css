@@ -1,9 +1,21 @@
-.planTrip {
-    text-align: center;
+.planTrip_container{
+  box-sizing: border-box;
+  width: 100%;
+  margin:0;
+  padding:15px;
+  background-color: white;
+  display:flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  row-gap: 30px;
+}
+.planTrip_map {
+  flex:3 1 45%;
   }
-  
-  .planTrip_header {
-    background-color: #8a0d17;
-    color: rgb(53, 175, 96);
-    padding: 1em 2em;
-  }
+.planTrip_search_form{
+  flex:1 1 380px;
+}
+img{
+  width: 100%;
+}
+

@@ -1,16 +1,15 @@
 .sched_container{
-    margin-top: 30px;
-    margin-left:10px;
-    margin-bottom: 30px;
+    box-sizing: border-box;
+    width: 100%;
     background:#fdf0e0;
-    text-align: left;
     color: black;
 }
 .sched_title{
     background-color:#ce4814;
     color: white;
     margin: 0;
-    padding:6px 20px;
+    padding:5px 15px;
+    box-sizing: border-box;
     width:100%;
     font-size: 1.1rem;
     font-weight: bold;
@@ -20,37 +19,43 @@
     display: flex;
     color: black;
     align-self: center;
-    background-color: #e5eef7;
-    font-size: 1rem;
+    background-color: #ececec;
+    align-content: center;
+    align-items: center;
+
+    font-size: 0.85rem;
     column-gap: 8px;
-    padding:3px 8px;
-    align-self: center;
+    padding:3px 15px;
 }
+div.sched_item:nth-of-type(2n){
+    background-color: white;
+}
+
 .sched_items{
     height: 300px;
     overflow:hidden; 
-    overflow-y:scroll;
+    overflow-y:auto;
+    padding-right: 15px;
+    
+    box-shadow: 0 0 2px rgb(163, 161, 161);
 }
 .sched_list_container{
     display: flex;
+    box-sizing: border-box;
+    width:100%;
     justify-content: space-between;
-    column-gap: 20px;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    background:#fdf0e0;
 }
 .sched_side_container{
-    width: 100%;
+    flex:1 1 380px;
 }
 .sched_subtitle{
-    background-color: white;
     color: black;
     margin: 0;
-    padding:6px 20px;
+    padding:10px 15px;
     width:100%;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-@media all and (max-width: 800px){
-    .sched_side_container{
-        width: 70%;
-    }
+    font-size: 0.9rem;
+    font-weight: 600;
 }

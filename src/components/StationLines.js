@@ -21,20 +21,20 @@ const StationLines = ({id})=>{
     return (
         <div className={styles.lines_container}>
             <div className={styles.lines_title}>
-            Lines Serving this Station: {id}
+            Lines Serving this Station
             </div>
             {lines !== null && 
             <div className={styles.lines_list}>
                 {lines.map(e=>{
                     return (
                         <div className={styles.lines_item } key={e.routeID} >
-                        <LineSymbol hexcolor={e[0].hexcolor} color={e[0].color} />
-                        {e[0].origName} 
-                        {e.length>1 && //shown if bi-direction
-                            <i class="bi bi-arrows"></i>
-                        }
-                       {e.length === 1 &&  <i class="bi bi-arrow-right-short"></i>}
-                       { e[0].destName}
+                            <LineSymbol hexcolor={e[0].hexcolor} color={e[0].color} />
+                            {e[0].origName} 
+                            {e.length>1 && //shown if bi-direction
+                               <i class="bi bi-arrows"></i>
+                            }
+                        {e.length === 1 &&  <i class="bi bi-arrow-right-short"></i>}
+                        { e[0].destName}
                         
                        </div>
                     )

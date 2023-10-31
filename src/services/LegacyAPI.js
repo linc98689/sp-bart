@@ -20,6 +20,17 @@ class LegacyAPI{
         return stations;
     }  
 
+    static async getStationsObj(){
+        let stns = await LegacyAPI.getStations();
+        console.log("stations: ", stns);
+        let objStns = stns.reduce((obj, e)=>{
+            obj[e.abbr] = e.name;
+            return obj;
+        }, {});
+        return objStns;
+    } 
+
+
     static async fetchStations(){
         console.log("loading stations...");
         let url = LegacyAPI.BASE_URL + "stn.aspx";
@@ -50,6 +61,7 @@ class LegacyAPI{
             }
     }
 
+    
     static async getStationByAbbreviation(abb){ //abb: four-chracter abbreviation of requested station
         let stations = LegacyAPI.loadFromLocalStorage("stations-obj");
         if(stations === null){
@@ -354,6 +366,8 @@ class LegacyAPI{
                 params:{
                     cmd,orig, dest, time, date,
                     key: LegacyAPI.BART_KEY,
+                    a:3,
+                    b:3,
                     json:'y'
                 }
             });
@@ -438,6 +452,12 @@ class BartTime{
         let d = timeStr.substring(pos2+1);
 
         return m + "/" + d + "/" + y;
+    }
+
+    static pickerToDateString(dateStr){
+        let d = dateStr.replace(/\//g, "-");
+        let date = new Date(d);
+        return date.toDateString();
     }
 
 }

@@ -1,0 +1,34 @@
+.trip_container{
+   
+}
+.trip_summary{
+    display:flex;
+    column-gap: 20px;
+    padding: 3px 0 0;
+  
+}
+.trip_duration{
+    font-size: 1rem;
+    font-weight: 500;
+    color:blueviolet;
+
+}
+.trip_fare{
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(226, 89, 43)
+}
+.trip_leg_container{
+}
+.trip_leg{
+    padding: 10px 0;
+}
+.trip_dest{
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(73, 69, 69);
+    padding: 5px 0;
+}
+.trip_icon{
+    padding-right:2px;
+}

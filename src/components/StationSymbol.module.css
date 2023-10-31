@@ -1,0 +1,19 @@
+.station_symbol{
+    box-sizing: border-box;
+    display: block;
+    padding: auto 0;
+    width:30px;
+    height:30px;
+    text-align: center;
+    position: relative;
+    border-radius: 50%;
+}
+.station_symbol_center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size: 1rem;
+    font-weight: 700;
+}

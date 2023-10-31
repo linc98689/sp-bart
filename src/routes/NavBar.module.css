@@ -1,12 +1,11 @@
 .navBar_container {
-    /* position:fixed;
-    top:0; */
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
     background-color: black;
     padding: 20px;
     font-size: 1rem;
+    font-weight: 600;
   }
   .navBar_item{
     color:white;

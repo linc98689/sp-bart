@@ -1,27 +1,28 @@
 .station {
+    box-sizing: border-box;
     margin:0;
-    padding:30px;
+    padding:0px 20px 30px;
     background-color: white;
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-self: center;
-    align-items: center;
+    align-items:stretch;
     row-gap: 30px;
-    /* column-gap: 20px; */
+    column-gap: 15px;
   }
   
   .station_single {
-    display:block;
-    width: 45vw;
+    /* display:block; */
+    flex: 1 1 40vw;
   }
   .station_double{
-    display:block;
-    width: 70vw;
+    /* display:block; */
+    flex: 1 1 70vw
   }
 
   @media all and (max-width: 800px){
     .station_single{
-      width: 70vw;
+      flex: 1 1 70vw;
     }
   }

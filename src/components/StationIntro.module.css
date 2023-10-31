@@ -2,20 +2,21 @@
     text-align: left;
     color: #0064a8;
     margin-top: 30px;
-    margin-left:10px;
     width:100%;
     background-color: white;
+    padding:0;
 }
 .stn_name{
-    font-size: 2.2rem;
+    font-size: 2.0rem;
     font-weight: bold;
 }
 .stn_address{
-    font-size:1rem;
+    font-size:0.9rem;
     margin-bottom:10px;
 }
 .stn_desc{
-    font-size:1.2rem;
+    font-size:1rem;
+    line-height: 1.5rem;
     color: black;
     margin:1rem 0;
 }

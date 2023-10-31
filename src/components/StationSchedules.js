@@ -27,7 +27,7 @@ const StationSchedules = ({id})=>{
                     Station Schedule Results for {sched.name}
                     </div>
                     <div className={styles.sched_list_container}>
-                        <div  className={styles.sched_side_container}> 
+                    {sched.north.items.length > 0 && <div  className={styles.sched_side_container}> 
                             <p className={styles.sched_subtitle}>Northbound Platform {sched.north.platforms.map(e=> <span>{e + " "}</span>)}</p>
                             <div className={styles.sched_items}>
                                 {sched.north.items.map(e=>(
@@ -38,9 +38,9 @@ const StationSchedules = ({id})=>{
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </div> }
                         
-                        <div  className={styles.sched_side_container}> 
+                        {sched.south.items.length > 0 && <div  className={styles.sched_side_container}> 
                             <p className={styles.sched_subtitle}>Southbound Platform {sched.south.platforms.map(e=> <span>{e + " "}</span>)}</p>
                             <div className={styles.sched_items}>
                                 {sched.south.items.map(e=>(
@@ -51,7 +51,7 @@ const StationSchedules = ({id})=>{
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </div>}
                         
                     </div>
                 

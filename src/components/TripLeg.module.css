@@ -1,0 +1,71 @@
+.leg_container{
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    column-gap: 5px;
+    justify-content: space-between;
+}
+.leg_orig{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    align-content: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    flex: 1 1;
+}
+.leg_time{
+    font-size: 1rem;
+    font-weight: 600;
+    text-align:center;
+    /* color: blue; */
+}
+.leg_stn{
+    font-size: 1rem;
+    /* color:blueviolet */
+    font-weight:400;
+    text-align:center;
+}
+.leg_route{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    column-gap: 10px;
+    flex: 3 1;
+    justify-content: center;
+}
+.leg_route_line{
+    font-size: 1rem;
+    box-sizing: border-box;
+    width: 5rem;
+    height: 3px;
+    border-bottom: 3px solid red;
+    box-shadow: 0 0 4px 1px #cecccc, 0 0 4px 4px #f8f3f3;
+    flex: 1 1;
+    min-width: 2rem;
+}
+.leg_route_num{
+    font-size: 1rem;
+    color:white;
+    font-weight: 500;
+    background-color: #64bb06;
+    padding: 5px 8px;
+    border-radius: 3px;
+}
+.leg_route_heading{
+    font-size: 0.9rem;
+    color:#626460;
+    font-weight: 500;
+}
+.leg_dest{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    align-content: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    flex: 1 1;
+}

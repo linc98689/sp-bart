@@ -45,14 +45,14 @@ const StationETD = ({id})=>{
                                 <div className={styles.etd_dest_line}>
                                     <LineSymbol hexcolor={el[0].hexcolor} color={el[0].color}/>
                                     <div className={styles.etd_dest}>{el[0].dest} </div>
-                                    <div className={styles.etd_times}>
+                                    <div className={styles.etd_dest_times}>
                                         {el.map(elm=>(
                                             <>
                                             <span> {elm.minutes} </span>
                                             <i class="bi bi-train-freight-front"></i>
                                             </>
                                         ))} 
-                                        min
+                                        <span className={styles.etd_dest_unit}>min</span>
                                     </div>
                                 </div>
                             );

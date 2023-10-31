@@ -1,13 +1,14 @@
 .etd_container{
     width:100%;
+    background-color: #f1f5e3;
 }
 .etd_title{
     display: flex;
     justify-content: space-between;
     background-color: #4f7e1c;
     color: white;
-    margin: 0;
-    padding:6px 20px;
+    padding:0 13px;
+    box-sizing: border-box;
     width:100%;
     font-size: 1.1rem;
     font-weight: bold;
@@ -20,43 +21,44 @@
 }
 .etd_right{
     font-size: 1rem;
+    font-weight: normal;
     padding: 5px;
 }
 .etd_list{
-    color:blueviolet;
+    padding-top:1px;
+    padding-left: 15px;
 }
 .etd_desc{
-    color:blue;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: black;
+    padding: 5px 15px;
 }
 .etd_link{
-    color:rgb(15, 15, 57);
-    text-decoration: underline;
+    color:blue;
+    font-weight: 500;
 }
 
-.etd_symbol{
-    box-sizing: border-box;
-    display: block;
-    padding: auto 0;
-    width:30px;
-    height:30px;
-    /* text-align: center; */
-    position: relative;
-}
-.etd_center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color:black;
-}
 .etd_dest_line{
     display:flex;
-
     color: black;
-    align-self: center;
-    background-color: #f1f5e3;
-    font-size: 1rem;
+    align-content:center;
+    align-items:center;
+    font-size: 0.85rem;
     column-gap: 8px;
-    padding:3px 8px;
-    align-self: center;
+    padding:3px 0;
+}
+
+.etd_dest_times{
+    padding: 0 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color:rgb(57, 46, 46)
+}
+
+.etd_dest_unit{
+    padding-left: 20px;
+    font-size: 0.85rem;
+    font-weight: normal;
+    color:black;
 }

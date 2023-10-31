@@ -6,43 +6,31 @@
     background-color: #e5eef7;
 }
 .lines_title{
+    box-sizing: border-box;
     background-color:#0064a8;
     color: white;
-    margin: 0;
-    padding:6px 20px;
+    padding:5px 15px;
     width:100%;
     font-size: 1.1rem;
     font-weight: bold;
 }
 .lines_list{
+    box-sizing: border-box;
     width:100%;
-    margin-bottom: 30px;
+    padding: 0 15px;
 }
 .lines_item{
     color: black;
     display: flex;
-    align-self: center;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
     background-color: #e5eef7;
-    font-size: 1rem;
+    font-size: 0.85rem;
     column-gap: 8px;
-    padding:3px 8px;
-    align-self: center;
+    padding:3px 0;
 }
-.lines_symbol{
-    box-sizing: border-box;
-    display: block;
-    padding: auto 0;
-    width:30px;
-    height:30px;
-    /* text-align: center; */
-    position: relative;
-}
-.lines_center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 .lines_airplane{
     width:30px;
     height: 30px;
@@ -50,5 +38,4 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* border-radius: 50%; */
 }
