@@ -84,4 +84,34 @@ select{
   border: 1px solid white;
   border-radius: 5px;
   margin: 0;
+  transition: all 0.5s;
+}
+button.form_submit:hover{
+  background-color:  #05719f;
+  /* background-color: white;
+  outline:2px solid #0796d4; */
+
+}
+.form_top{
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  column-gap: 15px;
+}
+.form_top_stns{
+  flex: 1 1;
+}
+.form_top_exchange{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: black;
+  flex-basis: 2rem;
+  /* padding: 5px; */
+}
+button.form_btn_exchange{
+  padding:5px;
 }

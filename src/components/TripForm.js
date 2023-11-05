@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styles from './TripForm.module.css';
 import LegacyAPI, {BartTime} from '../services/LegacyAPI';
 import StationSymbol from './StationSymbol';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const TripForm = ({removeForm, tripData})=>{
     const [stations, setStations] = useState(null);
@@ -41,37 +42,51 @@ const TripForm = ({removeForm, tripData})=>{
         let value = evt.target.value;
         setFormData(data=> ({...data, cmd: value}));
     };
+    const handleExchange = (evt)=>{
+        let a = new String(formData.stnA);
+        let b = new String(formData.stnB);
+        console.log("a: ", a);
+        console.log("b: ", b);
+        setFormData(data =>{
+            return {...data, "stnA":b,"stnB":a}});
+    }
 
     return (
         <div className={styles.form_container}>
             <div className={styles.form_title}>Trip Planner</div>
             <form className={styles.form_inputs}>
-                {/* station A */}
-                <div className={styles.form_input}>
-                    <StationSymbol color="#555555" char="A"/>
-                    <select required
-                    id="stnA" name="stnA" value={formData.stnA} onChange={handleChange} className="text-orange-500" >
-                        <option value=""> Enter starting point ...</option>
-                        
-                        {stations !== null && 
-                            stations.map((e)=>(
-                                <option key ={e.abbr} value={e.abbr}>{e.name}</option>
-                            ))
-                        }
-                    </select>
-                </div>
-                {/* station B */}
-                <div className={styles.form_input}>
-                    <StationSymbol color="#ee434d" char="B"/>  
-                    <select required 
-                    id="stnB" name="stnB" value={formData.stnB} onChange={handleChange} className="text-orange-500">
-                        <option value=""> Enter destination point ...</option>
-                        {stations !== null && 
-                            stations.map((e)=>(
-                                <option key ={e.abbr} value={e.abbr}>{e.name}</option>
-                            ))
-                        }
-                    </select>
+                <div className={styles.form_top}>
+                    <div className={styles.form_top_stns}>
+                        {/* station A */}
+                        <div className={styles.form_input}>
+                            <StationSymbol color="#555555" char="A"/>
+                            <select required
+                            id="stnA" name="stnA" value={formData.stnA} onChange={handleChange} className="text-orange-500" >
+                                <option value=""> Enter starting point ...</option>
+                                
+                                {stations !== null && 
+                                    stations.map((e)=>(
+                                        <option key ={e.abbr} value={e.abbr}>{e.name}</option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+                        {/* station B */}
+                        <div className={styles.form_input}>
+                            <StationSymbol color="#ee434d" char="B"/>  
+                            <select required 
+                            id="stnB" name="stnB" value={formData.stnB} onChange={handleChange} className="text-orange-500">
+                                <option value=""> Enter destination point ...</option>
+                                {stations !== null && 
+                                    stations.map((e)=>(
+                                        <option key ={e.abbr} value={e.abbr}>{e.name}</option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div className={styles.form_top_exchange}>
+                        <button type="button" className={styles.form_btn_exchange} onClick={handleExchange}><i class="bi bi-arrow-down-up"></i></button></div>
                 </div>
                 <div className={styles.form_time_date}>
                     {/* input: time */}

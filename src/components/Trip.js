@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import TripLeg from "./TripLeg";
 import styles from "./Trip.module.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -17,7 +18,7 @@ const Trip = ({trip, routes, stations})=>{ // for one trip
                 <div className={styles.trip_leg_container}>
                     {trip.leg.length === 1? 
                     <TripLeg orig={trip.leg[0]["@origin"]} 
-                    origTime={trip.leg[0]["@destination"]}
+                    origTime={trip.leg[0]["@origTimeMin"]}
                     dest={trip.leg[0]["@destination"]}
                     destTime={trip.leg[0]["@destTimeMin"]}
                     route={trip.leg[0]["@trainHeadStation"]}
@@ -27,7 +28,8 @@ const Trip = ({trip, routes, stations})=>{ // for one trip
                     {trip.leg.map((e,i)=>(
                         <div className={styles.trip_leg}>
                             {i!== trip.leg.length-1 && <div className={styles.trip_dest}>
-                                Transfer at : {stations[e["@destination"]]} 
+                                Transfer at <span className={styles.link}>
+                                    <Link to={`/station/${e["@destination"]}` }   target="_blank"> {stations[e["@destination"]]} </Link></span>
                                 ({e["@destination"]})
                             </div>}
                             <TripLeg 

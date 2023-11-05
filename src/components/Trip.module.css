@@ -16,7 +16,7 @@
 .trip_fare{
     font-size: 1rem;
     font-weight: 500;
-    color: rgb(226, 89, 43)
+    color: #416a49;
 }
 .trip_leg_container{
 }
@@ -31,4 +31,9 @@
 }
 .trip_icon{
     padding-right:2px;
+}
+.link{
+text-decoration: underline;
+color: blue;
+margin-right: 5px;
 }

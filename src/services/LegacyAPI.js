@@ -384,7 +384,8 @@ class LegacyAPI{
 class BartTime{
     static getCurrentDate(){ // mm/dd/yyyy
         let now =  new Date();
-        return now.toLocaleDateString('en-US', {timeZone: 'America/Los_Angeles' });
+        return BartTime.bartToPicker_date(
+            now.toLocaleDateString('en-US', {timeZone: 'America/Los_Angeles' }));
     }
 
     static getCurrentTime(){ // 9:42AM
