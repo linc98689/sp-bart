@@ -26,12 +26,12 @@ const Home =  ()=>{
                 <div className={`${styles.content} ${styles.color1}`}><i class="bi bi-geo-alt"></i></div>
             </Link>
 
-            <Link to="/realtime/12TH" className={styles.card}>
+            <Link to="/realtime" className={styles.card}>
                 <div className={`${styles.title} ${styles.color2}`}>Real Time Departures</div>
                 <div className={`${styles.content} ${styles.color2}`}><i class="bi bi-clock"></i></div>
             </Link>
 
-            <Link to="/schedule/12TH"  className={styles.card}>
+            <Link to="/schedule"  className={styles.card}>
                 <div className={`${styles.title} ${styles.color3}`}>Schedules</div>
                 <div className={`${styles.content} ${styles.color3}`}><i class="bi bi-map"></i></div>
             </Link>

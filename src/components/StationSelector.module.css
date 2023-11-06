@@ -1,0 +1,116 @@
+.selector_container{
+    box-sizing: border-box;
+    width:100%;
+    margin:0;
+    /* margin-top:3px; */
+    text-align: left;
+    background-color: #e5eef7;
+}
+.selector_title{
+    box-sizing: border-box;
+    background-color:#0064a8;
+    color: white;
+    padding:5px 15px;
+    width:100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.selector_btn_choose{
+    background-color: #2299e8;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500px;
+    padding: 5px 15px;
+    border-radius: 20%;
+    border: none;
+    outline: 1px solid white;
+    outline-offset: -3px;
+}
+.selector_form_container{
+    box-sizing: border-box;
+    width: 100%;
+    margin:0;
+    margin-bottom: 20px;
+    padding:0  15px;
+    border-bottom: 1px solid white;
+}
+.selector_select{
+    appearance: none;
+/* safari */
+-webkit-appearance: none;
+/* other styles for aesthetics */
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.675em 0.2em 0.675em;
+  font-weight: 300;
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #323131;
+  color: #555555;
+  cursor: pointer;
+  min-width: 350px;
+}
+
+.selector_subtitle{
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin:0;
+    padding:15px 0;
+}
+.selector_recent_container{
+    box-sizing: border-box;
+    width: 100%;
+    margin:0;
+    margin-bottom: 20px;
+    padding:0  15px;
+    border-bottom: 1px solid white;
+}
+.selector_list_item{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
+    background-color: #e5eef7;
+    font-size: 0.9rem;
+    column-gap: 8px;
+    padding:3px;
+}
+div.selector_list_item:nth-of-type(2n+1){
+    background-color: white;
+}
+.selector_favorite_container{
+    box-sizing: border-box;
+    width: 100%;
+    margin:0;
+    margin-bottom: 20px;
+    padding:0  15px 30px;
+}
+
+/* .selector_stn_name{
+    background-color:  red;
+} */
+.selector_stn_name_selected{
+    color: #ce4814;
+    font-size: 1.1rem;
+    font-weight: 500px;;
+}
+div.selector_list_item:hover{
+     background-color:#a2c8f7;
+}
+button{
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+.selector_list_container{
+    border-top: 1px solid rgb(132, 0, 255);
+}
+
+
+

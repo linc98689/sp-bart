@@ -28,11 +28,6 @@ const TripForm = ({removeForm, tripData})=>{
     const handleSubmit = (evt)=>{
         evt.preventDefault();
 
-        // convert time to h:mm+am/pm
-        // let t = BartTime.pickerToBart_time(formData.time);
-
-        // convert date from yyyy-mm-dd to mm/dd/yyyy
-        // let d = BartTime.pickerToBart_date(formData.date);
         if(formData.stnA === "" || formData.stnB === "")
             return;
         

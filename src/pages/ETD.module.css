@@ -1,0 +1,26 @@
+.etd_container{
+    box-sizing: border-box;
+    width: 100%;
+    margin:0;
+    padding:0 15px 20px;
+    background-color: white;
+    display:flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 30px;
+    justify-content: center;
+}
+.etd_selector{
+    flex:1 0 380px ;
+}
+.etd_result{
+    flex:1 0 380px;
+}
+.etd_title{
+    color:rgb(42, 41, 41);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin:0;
+    padding: 25px;
+}
+

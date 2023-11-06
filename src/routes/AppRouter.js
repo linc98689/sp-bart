@@ -3,8 +3,8 @@ import Home from "../pages/Home";
 import Stations from "../pages/Stations";
 import Station from "../pages/Station";
 import PlanTrip from "../pages/PlanTrip";
-import StationETD from "../components/StationETD";
-import StationSchedules from "../components/StationSchedules";
+import ETD from "../pages/ETD";
+import Schedule from "../pages/Schedule";
 
 const AppRouter = () =>{
     return (
@@ -13,8 +13,8 @@ const AppRouter = () =>{
             <Route path="/stations" element={<Stations />}  />
             <Route path="/station/:id" element={<Station />}  />
             <Route path="/plantrip" element={<PlanTrip />}  />
-            <Route path="/realtime/:id" element={<StationETD  id={"12TH"}/>} /> //todo
-            <Route path="/schedule/:id" element={<StationSchedules id={"12TH"}/>} /> //todo
+            <Route path="/realtime" element={<ETD />} /> 
+            <Route path="/schedule" element={<Schedule />} /> 
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     );
