@@ -20,7 +20,7 @@ const StationSelector = ({funUpdate})=>{
 
         let fvts =localStorage.getItem("user-stns-favorites");
         if(fvts !== null)
-            setUserFavorites(data => JSON.parse(fvts));
+            setUserFavorites(data => JSON.parse(fvts).sort(compFavorite));
 
         const getStations = async ()=>{
             let res = await LegacyAPI.getStations();
@@ -84,7 +84,7 @@ const StationSelector = ({funUpdate})=>{
                     e.isFavorite = true;
                     fvts = [{...e, selected:false}, ...userFavorites]; // add to favorites
                 }
-                setUserFavorites(data => fvts);
+                setUserFavorites(data => fvts.sort(compFavorite));
                 localStorage.setItem("user-stns-favorites", JSON.stringify( fvts));
             } 
         });
@@ -108,7 +108,7 @@ const StationSelector = ({funUpdate})=>{
         fvts = fvts.filter(e => e.abbr !== stn);
         if(favoriteSelect === stn)
             setFavoriteSelect(data => "");
-        setUserFavorites(data => fvts);
+        setUserFavorites(data => fvts.sort(compFavorite));
         localStorage.setItem("user-stns-favorites", JSON.stringify( fvts));
     };
     const handleRecentSelect = (evt)=>{
@@ -136,7 +136,7 @@ const StationSelector = ({funUpdate})=>{
                 e.selected = false;
             }
         });
-        setUserFavorites(data => stns);
+        setUserFavorites(data => stns.sort(compFavorite));
         setFavoriteSelect(data => stn);
     };
 
@@ -167,9 +167,9 @@ const StationSelector = ({funUpdate})=>{
         stns.forEach(e=>{
                 e.selected = false;
         });
-        setUserFavorites(data => stns);
+        setUserFavorites(data => stns.sort(compFavorite));
         setFavoriteSelect(data => "");
-
+  
         unshiftUserStn(favoriteSelect, true);
 
     }
@@ -199,6 +199,15 @@ const StationSelector = ({funUpdate})=>{
         setUserStns(data => sts);
         localStorage.setItem("user-stns", JSON.stringify(sts));
     }
+
+    const compFavorite = (a, b) =>{
+        if(a.abbr < b.abbr)
+            return -1;
+        else if(a.abbr > b.abbr)
+            return 1;
+        else
+            return 0;
+    };
 
 
     return (
