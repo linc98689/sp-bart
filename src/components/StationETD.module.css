@@ -42,6 +42,7 @@
 .etd_dest_line{
     display:flex;
     color: black;
+    justify-content: space-between;
     align-content:center;
     align-items:center;
     font-size: 0.85rem;
@@ -53,7 +54,9 @@
     padding: 0 15px;
     font-size: 0.75rem;
     font-weight: bold;
-    color:rgb(57, 46, 46)
+    color:rgb(57, 46, 46);
+    display: flex;
+    column-gap: 8px;
 }
 
 .etd_dest_unit{
@@ -61,4 +64,13 @@
     font-size: 0.85rem;
     font-weight: normal;
     color:black;
+}
+.etd_dest_left{
+    display:flex;
+    column-gap: 8px;
+    align-items: center;
+    align-content: center;
+}
+.etd_dest_item{
+    padding-right: 8px;
 }

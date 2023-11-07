@@ -43,14 +43,17 @@ const StationETD = ({id})=>{
                         {e.estimate.map((el)=>{
                             return (
                                 <div className={styles.etd_dest_line}>
+                                    <div className={styles.etd_dest_left}>
                                     <LineSymbol hexcolor={el[0].hexcolor} color={el[0].color}/>
                                     <div className={styles.etd_dest}>{el[0].dest} </div>
+                                    </div>
+
                                     <div className={styles.etd_dest_times}>
                                         {el.map(elm=>(
-                                            <>
+                                            <div className={styles.etd_dest_item}>
                                             <span> {elm.minutes} </span>
                                             <i class="bi bi-train-freight-front"></i>
-                                            </>
+                                            </div>
                                         ))} 
                                         <span className={styles.etd_dest_unit}>min</span>
                                     </div>

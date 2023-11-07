@@ -6,7 +6,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const StationSelector = ({funUpdate})=>{
     const MAX_RECENT = 5;
-    const [currStn, setCurrStn] = useState("12th");
     const [stations, setStations] = useState(null);
     const [userStns, setUserStns] = useState([]);
     const [userFavorites, setUserFavorites] = useState([]);
@@ -47,13 +46,16 @@ const StationSelector = ({funUpdate})=>{
             return;
 
         // set currStn
-        setCurrStn(data => stn);
         funUpdate(stn, getStationName(stn));
 
         // save userStns
         let sts = userStns.filter(e=> e.abbr !== stn);
         if(sts.length === userStns.length){// has no record
-            let newItem = {abbr:stn, isFavorite:false, selected: false};
+            // check if in userFavorites
+            let newItem = {abbr:stn, isFavorite:false, selected: false}
+            if(userFavorites.some(e => e.abbr === stn))
+                newItem.isFavorite = true;
+
             sts.unshift(newItem);
             if (sts.length > MAX_RECENT)
                 sts.pop();
@@ -141,7 +143,6 @@ const StationSelector = ({funUpdate})=>{
     const handleCurrStationRecent = (evt)=>{
         if (recentSelect==="")
             return;
-        setCurrStn(data => recentSelect);
         funUpdate(recentSelect, getStationName(recentSelect));
 
         // update recent
@@ -159,7 +160,6 @@ const StationSelector = ({funUpdate})=>{
     const handleCurrStationFavorite = (evt)=>{
         if (favoriteSelect==="")
             return;
-        setCurrStn(data => favoriteSelect);
         funUpdate(favoriteSelect, getStationName(favoriteSelect));
 
         // update favorite
@@ -210,7 +210,6 @@ const StationSelector = ({funUpdate})=>{
             <form className={styles.selector_form_container}>
                 <div className={styles.selector_subtitle}>From a list of all stations:</div>
                 <div className={styles.selector_form_input}>
-                    {/* <label className={styles.selector_form_label} htmlFor='stnAbbr'>Change station: {getStationName(currStn)}</label> */}
                     <select id='stnAbbr' name='stnAbbr' value={formData["stnAbbr"]}
                 className={styles.selector_select} onChange={handleChange}>
                         <option value="">Select a station</option>
