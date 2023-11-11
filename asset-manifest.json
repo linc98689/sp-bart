@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/sp-bart/static/css/main.d7fa3bd0.css",
-    "main.js": "/sp-bart/static/js/main.96e38e62.js",
+    "main.css": "/sp-bart/static/css/main.3a03eeca.css",
+    "main.js": "/sp-bart/static/js/main.1683fd16.js",
     "static/js/787.f0836731.chunk.js": "/sp-bart/static/js/787.f0836731.chunk.js",
     "static/media/bootstrap-icons.woff?": "/sp-bart/static/media/bootstrap-icons.449ad8adf6ae0424b7ed.woff",
     "static/media/bartMap.jpg": "/sp-bart/static/media/bartMap.ecc623a6fd08718b7598.jpg",
     "static/media/bootstrap-icons.woff2?": "/sp-bart/static/media/bootstrap-icons.dea24bf5a7646d8b84e7.woff2",
     "static/media/bartStation.jpg": "/sp-bart/static/media/bartStation.079c4f4cc2223e6cc8f5.jpg",
     "index.html": "/sp-bart/index.html",
-    "main.d7fa3bd0.css.map": "/sp-bart/static/css/main.d7fa3bd0.css.map",
-    "main.96e38e62.js.map": "/sp-bart/static/js/main.96e38e62.js.map",
+    "main.3a03eeca.css.map": "/sp-bart/static/css/main.3a03eeca.css.map",
+    "main.1683fd16.js.map": "/sp-bart/static/js/main.1683fd16.js.map",
     "787.f0836731.chunk.js.map": "/sp-bart/static/js/787.f0836731.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7fa3bd0.css",
-    "static/js/main.96e38e62.js"
+    "static/css/main.3a03eeca.css",
+    "static/js/main.1683fd16.js"
   ]
 }
