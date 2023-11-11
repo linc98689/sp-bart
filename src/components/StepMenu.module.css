@@ -3,6 +3,8 @@
     margin: 0;
     padding: 10px 30px 10px;
     display: flex;
+    align-items: center;
+    align-content: center;
     column-gap: 10px;
     font-size: 1.1rem;
     font-weight: 400;
@@ -15,4 +17,5 @@
 }
 .stepMenu_nonlink_item{
     color: black;
+    font-size: 0.9rem;
 }
