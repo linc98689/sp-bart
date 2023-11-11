@@ -1,20 +1,25 @@
+.schedule_menu_container, .schedule_menu{
+  box-sizing: border-box;
+  width: 100%;
+  margin:0;
+}
 .schedule_container{
     box-sizing: border-box;
     width: 100%;
     margin:0;
-    padding:0 15px 20px;
+    padding:25px;
     background-color: white;
     display:flex;
     flex-wrap: wrap;
     column-gap: 15px;
     row-gap: 30px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .schedule_selector{
-    flex:1 0 380px ;
+    flex:1 1 300px ;
 }
 .schedule_result{
-    flex:1 0 380px;
+    flex:1 1 300px;
 }
 .schedule_title{
     color:rgb(42, 41, 41);

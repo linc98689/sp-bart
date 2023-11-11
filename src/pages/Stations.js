@@ -17,8 +17,8 @@ const Stations = ()=>{
         }, []);
 
     return (
-        <div className={styles.station_menu_container} >
-            <div className={styles.station_menu}>
+        <div className={styles.stations_menu_container} >
+            <div className={styles.stations_menu}>
                 <StepMenu 
                 terms={["home","stations"]} 
                 locations={["/"]} />

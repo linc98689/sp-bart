@@ -13,8 +13,8 @@ const Schedule = ()=>{
     }
 
     return (
-        <div className={styles.station_menu_container} >
-            <div className={styles.station_menu}>
+        <div className={styles.schedule_menu_container} >
+            <div className={styles.schedule_menu}>
                 <StepMenu 
                 terms={["home","stations",`schedule - ${currStn.name}`]} 
                 locations={["/", "/stations"]} />

@@ -1,10 +1,12 @@
 .navBar_container {
+    box-sizing: border-box;
     width: 100vw;
+    margin:0;
     display: flex;
     justify-content: space-evenly;
     background-color: black;
-    padding: 20px;
-    font-size: 1rem;
+    padding: 15px;
+    font-size: 0.8rem;
     font-weight: 600;
   }
   .navBar_item{

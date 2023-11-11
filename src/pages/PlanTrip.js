@@ -26,8 +26,8 @@ const PlanTrip = ()=>{
     }
 
     return (
-        <div className={styles.station_menu_container} >
-            <div className={styles.station_menu}>
+        <div className={styles.planTrip_menu_container} >
+            <div className={styles.planTrip_menu}>
                 <StepMenu 
                 terms={["home","stations","trip-planner"]} 
                 locations={["/", "/stations"]} />

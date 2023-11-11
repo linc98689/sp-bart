@@ -7,9 +7,9 @@ const NavBar = ()=>{
     return (
         <div className={styles.navBar_container}>
             <div><NavLink  to="/" className={({isActive})=>(isActive?styles.active:styles.navBar_item) 
-        } ><i className={`${styles.icon} bi bi-train-front-fill` }></i>BART-react</NavLink></div>
+        } ><i className={`${styles.icon} bi bi-train-front-fill` }></i>iBART</NavLink></div>
             <div><NavLink  to="/stations" className={({isActive})=>(isActive?styles.active:styles.navBar_item)} >STATIONS</NavLink></div>
-            <div><NavLink  to="/plantrip" className={({isActive})=>(isActive?styles.active:styles.navBar_item)} >TRIP PLANNER</NavLink></div>
+            <div><NavLink  to="/plantrip" className={({isActive})=>(isActive?styles.active:styles.navBar_item)} >PLANNER</NavLink></div>
 
         </div>
     );

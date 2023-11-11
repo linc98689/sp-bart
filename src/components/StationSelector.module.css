@@ -49,6 +49,7 @@
   color: #555555;
   cursor: pointer;
   min-width: 350px;
+  margin-bottom: 5px;
 }
 
 .selector_subtitle{

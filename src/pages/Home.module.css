@@ -1,5 +1,6 @@
 .home {
     box-sizing: border-box;
+    margin:0;
     background-position:right;
     background-size: cover;
     background-repeat: no-repeat;
