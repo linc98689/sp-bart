@@ -5,6 +5,7 @@ import TripResult from "../components/TripResult";
 import { BartTime } from '../services/LegacyAPI';
 
 import img from "../images/bartMap.jpg";
+import StepMenu from '../components/StepMenu';
 
 const PlanTrip = ()=>{
     const [tripData, setTripData] = useState({
@@ -25,15 +26,22 @@ const PlanTrip = ()=>{
     }
 
     return (
-        <div className={styles.planTrip_container}>
-            <div className={styles.planTrip_search_form}>
-                {hasResult? 
-                <TripResult setForm={setForm} tripData={tripData} /> :
-                <TripForm removeForm={removeForm} tripData={tripData}/>}  
+        <div className={styles.station_menu_container} >
+            <div className={styles.station_menu}>
+                <StepMenu 
+                terms={["home","stations","trip-planner"]} 
+                locations={["/", "/stations"]} />
             </div>
-            
-            <div className={styles.planTrip_map} >
-                <img src={`${img}`} alt="bart-map"/>
+            <div className={styles.planTrip_container}>
+                <div className={styles.planTrip_search_form}>
+                    {hasResult? 
+                    <TripResult setForm={setForm} tripData={tripData} /> :
+                    <TripForm removeForm={removeForm} tripData={tripData}/>}  
+                </div>
+                
+                <div className={styles.planTrip_map} >
+                    <img src={`${img}`} alt="bart-map"/>
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,18 @@
+.stepMenu_container{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px 30px 10px;
+    display: flex;
+    column-gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: black;
+    background-color: white;
+}
+.stepMenu_link_item{
+    text-decoration: none;
+    color: blue;
+}
+.stepMenu_nonlink_item{
+    color: black;
+}
