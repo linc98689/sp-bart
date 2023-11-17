@@ -68,7 +68,6 @@ const TripForm = ({removeForm, tripData})=>{
                                     }
                                 </select>
                                 {formData.stnA === "" && <p className={styles.form_required}>required</p>}
-                                {/* <p className={formData.stnA === ""? styles.form_required: styles.form_hide}>required</p> */}
                             </div>
                         </div>
                         {/* station B */}

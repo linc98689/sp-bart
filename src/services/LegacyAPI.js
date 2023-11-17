@@ -391,7 +391,8 @@ class BartTime{
     static getCurrentTime(){ // 9:42AM
         let now =  new Date();
         let str = now.toLocaleTimeString('en-US', {timeZone: 'America/Los_Angeles' });
-        return str.replace(/:\d{2} /, ""); //omit seconds
+        return BartTime.bartToPicker_time(
+            str.replace(/:\d{2} /, "")); //omit seconds
     }
 
     static getDateFromNow(days){ // yyyy-mm-dd
@@ -406,13 +407,18 @@ class BartTime{
         let idx = timeStr.indexOf(":");
         let h = Number(timeStr.substring(0, idx));
         let min = timeStr.substring(idx+1, idx+3);
+        if(min.length <2) min = "0"+min;
+
         let p = timeStr.substring(len-2).toLowerCase();
 
         if(p === "am"){
             if(h === 12)
                 return "00:" + min;
-            else
-                return h.toString() + ":" + min;
+            else{
+                if (h<10)
+                return  h.toString().length <2? "0"+h.toString() + ":" + min : 
+                    h.toString() + ":" + min;
+            }
         }
         else{
             if(h === 12)

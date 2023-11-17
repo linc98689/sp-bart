@@ -12,7 +12,7 @@ const PlanTrip = ()=>{
         stnA:"", 
         stnB:"", 
         cmd:"arrive",
-        time: BartTime.bartToPicker_time(BartTime.getCurrentTime()),
+        time: BartTime.getCurrentTime(),
         date: BartTime.getCurrentDate(),
         max: BartTime.getDateFromNow(56),
         min: BartTime.getDateFromNow(-10)});
