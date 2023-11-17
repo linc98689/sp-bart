@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styles from './TripForm.module.css';
-import LegacyAPI, {BartTime} from '../services/LegacyAPI';
+import LegacyAPI from '../services/LegacyAPI';
 import StationSymbol from './StationSymbol';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -28,7 +28,8 @@ const TripForm = ({removeForm, tripData})=>{
     const handleSubmit = (evt)=>{
         evt.preventDefault();
 
-        if(formData.stnA === "" || formData.stnB === "")
+        if(formData.stnA === "" || formData.stnB === "" 
+         || formData.date === "" || formData.time === "")
             return;
         
         removeForm({...formData});
@@ -55,29 +56,36 @@ const TripForm = ({removeForm, tripData})=>{
                         {/* station A */}
                         <div className={styles.form_input}>
                             <StationSymbol color="#555555" char="A"/>
-                            <select required
-                            id="stnA" name="stnA" value={formData.stnA} onChange={handleChange} className="text-orange-500" >
-                                <option value=""> Enter starting point ...</option>
-                                
-                                {stations !== null && 
-                                    stations.map((e)=>(
-                                        <option key ={e.abbr} value={e.abbr}>{e.name}</option>
-                                    ))
-                                }
-                            </select>
+                            <div className={styles.form_select}>
+                                <select required
+                                id="stnA" name="stnA" value={formData.stnA} onChange={handleChange}  >
+                                    <option value=""> Enter starting point ... </option>
+                                    
+                                    {stations !== null && 
+                                        stations.map((e)=>(
+                                            <option key ={e.abbr} value={e.abbr}>{e.name}</option>
+                                        ))
+                                    }
+                                </select>
+                                {formData.stnA === "" && <p className={styles.form_required}>required</p>}
+                                {/* <p className={formData.stnA === ""? styles.form_required: styles.form_hide}>required</p> */}
+                            </div>
                         </div>
                         {/* station B */}
                         <div className={styles.form_input}>
                             <StationSymbol color="#ee434d" char="B"/>  
-                            <select required 
-                            id="stnB" name="stnB" value={formData.stnB} onChange={handleChange} className="text-orange-500">
-                                <option value=""> Enter destination point ...</option>
-                                {stations !== null && 
-                                    stations.map((e)=>(
-                                        <option key ={e.abbr} value={e.abbr}>{e.name}</option>
-                                    ))
-                                }
-                            </select>
+                            <div className={styles.form_select}>
+                                <select required 
+                                id="stnB" name="stnB" value={formData.stnB} onChange={handleChange} >
+                                    <option value=""> Enter destination point ...</option>
+                                    {stations !== null && 
+                                        stations.map((e)=>(
+                                            <option key ={e.abbr} value={e.abbr}>{e.name}</option>
+                                        ))
+                                    }
+                                </select>
+                                {formData.stnB === "" && <p className={styles.form_required}>required</p>}
+                            </div>
                         </div>
                     </div>
                     <div className={styles.form_top_exchange}>
@@ -95,9 +103,9 @@ const TripForm = ({removeForm, tripData})=>{
                     <div className={styles.form_input}>
                         <div className={styles.form_desc}>Date</div>
                         <input className={styles.form_date}
-                        type="date"  id="date" name="date" value={formData.date}
-                        max={BartTime.getDateFromNow(56)}
-                        min={BartTime.getDateFromNow(-10)}
+                        type="date"  id="date" name="date" value={`${formData.date}`}
+                        max={`${formData.max}`}
+                        min={`${formData.min}`}
                         onChange={handleChange} />
                     </div>
                 </div>

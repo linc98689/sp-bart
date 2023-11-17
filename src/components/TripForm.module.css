@@ -115,3 +115,14 @@ button.form_submit:hover{
 button.form_btn_exchange{
   padding:5px;
 }
+.form_required{
+  margin:0;
+  padding-bottom:5px;
+  font-size:0.55em;
+  font-weight: 500;
+  color:rgb(118, 3, 3);
+}
+.form_select{
+  box-sizing: border-box;
+  width:100%;
+}

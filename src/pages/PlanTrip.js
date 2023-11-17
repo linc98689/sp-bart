@@ -13,7 +13,10 @@ const PlanTrip = ()=>{
         stnB:"", 
         cmd:"arrive",
         time: BartTime.bartToPicker_time(BartTime.getCurrentTime()),
-        date: BartTime.bartToPicker_date(BartTime.getCurrentDate())  });
+        date: BartTime.getCurrentDate(),
+        max: BartTime.getDateFromNow(56),
+        min: BartTime.getDateFromNow(-10)});
+      
     const [hasResult, setHasResult] = useState(false);
 
     const removeForm = (formData)=>{

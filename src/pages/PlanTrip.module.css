@@ -15,9 +15,11 @@
   row-gap: 30px;
 }
 .planTrip_map {
+  min-width: fit-content;
   flex:3 1 45%;
   }
 .planTrip_search_form{
+  min-width: fit-content;
   flex:1 1 200px;
 }
 img{

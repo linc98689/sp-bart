@@ -382,7 +382,7 @@ class LegacyAPI{
 }
 
 class BartTime{
-    static getCurrentDate(){ // mm/dd/yyyy
+    static getCurrentDate(){ //yyyy-mm-dd
         let now =  new Date();
         return BartTime.bartToPicker_date(
             now.toLocaleDateString('en-US', {timeZone: 'America/Los_Angeles' }));
@@ -394,10 +394,11 @@ class BartTime{
         return str.replace(/:\d{2} /, ""); //omit seconds
     }
 
-    static getDateFromNow(days){ // mm/dd/yyyy
+    static getDateFromNow(days){ // yyyy-mm-dd
         let event = new Date();
         event.setDate(event.getDate() + days);
-        return event.toLocaleDateString('en-US', {timeZone: 'America/Los_Angeles'})
+        return BartTime.bartToPicker_date(
+            event.toLocaleDateString('en-US', {timeZone: 'America/Los_Angeles'}));
     }
 
     static bartToPicker_time(timeStr){ // from hh:mm+am/pm to hh:mm
@@ -425,7 +426,10 @@ class BartTime{
         let pos1 = timeStr.indexOf("/");
         let pos2 = timeStr.indexOf("/", pos1+1);
         let m = timeStr.substring(0, pos1);
+        if(m.length <2) m = "0" + m;
+
         let d = timeStr.substring(pos1+1, pos2);
+        if(d.length <2) d = "0" + d;
         let y = timeStr.substring(pos2+1);
 
         return y + "-" + m + "-" + d;
