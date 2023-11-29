@@ -39,8 +39,8 @@ const TripForm = ({removeForm, tripData})=>{
         setFormData(data=> ({...data, cmd: value}));
     };
     const handleExchange = (evt)=>{
-        let a = new String(formData.stnA);
-        let b = new String(formData.stnB);
+        let a = formData.stnA;
+        let b = formData.stnB;
         console.log("a: ", a);
         console.log("b: ", b);
         setFormData(data =>{
@@ -88,7 +88,7 @@ const TripForm = ({removeForm, tripData})=>{
                         </div>
                     </div>
                     <div className={styles.form_top_exchange}>
-                        <button type="button" className={styles.form_btn_exchange} onClick={handleExchange}><i class="bi bi-arrow-down-up"></i></button></div>
+                        <button type="button" className={styles.form_btn_exchange} onClick={handleExchange}><i className="bi bi-arrow-down-up"></i></button></div>
                 </div>
                 <div className={styles.form_time_date}>
                     {/* input: time */}

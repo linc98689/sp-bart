@@ -3,9 +3,6 @@ import axios from 'axios';
 class LegacyAPI{
     static BASE_URL ="https://api.bart.gov/api/";
     static BART_KEY = "MW9S-E7SL-26DU-VV8V";
-    static WEEK_DAY = "10/19/2023";
-    static SAT_DAY = "10/21/2023";
-    static SUN_DAY = "10/22/2023";
 
     static async getStations(){
         let stations = LegacyAPI.loadFromLocalStorage("stations");
